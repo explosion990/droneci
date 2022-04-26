@@ -2,7 +2,7 @@
 echo "Cloning dependencies"
 apt-get -y install sudo python3-pip curl unzip p7zip-full curl python2 binutils-aarch64-linux-gnu wget binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi libtinfo5 -yq xxd python build-essential make gcc-aarch64-linux-gnu
 sudo ln -sf /usr/share/zoneinfo/Asia/Singapore /etc/localtime
-git clone --depth=1 https://github.com/hydrangea07/kernel_oneplus_kebab kernel && cd kernel
+git clone --depth=1 https://github.com/hydrangea07/kernel_oneplus_kebab -b S kernel && cd kernel
 git clone --depth=1 https://github.com/hydrangea07/AnyKernel3 AnyKernel3
 git clone --depth=1 https://github.com/pkm774/android-kernel-tools ktools
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/misc prebuilts/misc
