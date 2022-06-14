@@ -2,7 +2,7 @@
 echo "Cloning dependencies"
 apt-get -y install sudo python3-pip curl unzip p7zip-full curl python2 binutils-aarch64-linux-gnu wget binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi libtinfo5 -yq xxd python build-essential make gcc-aarch64-linux-gnu
 sudo ln -sf /usr/share/zoneinfo/Asia/Singapore /etc/localtime
-git clone --depth=1 https://github.com/minarypenguin/xiaomi_kernel_surya -b surya kernel && cd kernel
+git clone --depth=1 https://github.com/minarypenguin/xiaomi_kernel_surya -b oss kernel && cd kernel
 git clone --depth=1 https://github.com/pkm774/android-kernel-tools ktools
 echo "Done"
 
@@ -56,8 +56,9 @@ make \
 compile
 
 # Build flashable zip
-cp out/arch/arm64/boot/Image.gz-dtb AnyKernel3/
-zipfile="./out/mnri-non-surya-$(date +%Y%m%d-%H%M).zip"
+cp out/arch/arm64/boot/Image.gz AnyKernel3/
+cp out/arch/arm64/boot/dts/qcom/sdmmagpie.dtb AnyKernel3/dtb/
+zipfile="./out/mnri-surya-$(date +%Y%m%d-%H%M).zip"
 7z a -mm=Deflate -mfb=258 -mpass=15 -r $zipfile ./AnyKernel3/*
 
 END=$(date +"%s")
